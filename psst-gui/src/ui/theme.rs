@@ -4,8 +4,15 @@ pub use druid::theme::*;
 
 use crate::data::{AppState, Theme};
 
+pub const UI_SCALE: f64 = 1.2;  // Change this to taste
+
+/// custom scaling function
+pub const fn s(x: f64) -> f64 {
+    x * UI_SCALE
+}
+
 pub fn grid(m: f64) -> f64 {
-    GRID * m
+    s(s(GRID * m))
 }
 
 pub const GRID: f64 = 8.0;
@@ -33,10 +40,10 @@ pub const UI_FONT_MONO: Key<FontDescriptor> = Key::new("app.ui-font-mono");
 pub const TEXT_SIZE_SMALL: Key<f64> = Key::new("app.text-size-small");
 
 pub const ICON_COLOR: Key<Color> = Key::new("app.icon-color");
-pub const ICON_SIZE_TINY: Size = Size::new(12.0, 12.0);
-pub const ICON_SIZE_SMALL: Size = Size::new(14.0, 14.0);
-pub const ICON_SIZE_MEDIUM: Size = Size::new(16.0, 16.0);
-pub const ICON_SIZE_LARGE: Size = Size::new(22.0, 22.0);
+pub const ICON_SIZE_TINY: Size = Size::new(s(12.0), s(12.0));
+pub const ICON_SIZE_SMALL: Size = Size::new(s(14.0), s(14.0));
+pub const ICON_SIZE_MEDIUM: Size = Size::new(s(16.0), s(16.0));
+pub const ICON_SIZE_LARGE: Size = Size::new(s(22.0), s(22.0));
 
 pub const LINK_HOT_COLOR: Key<Color> = Key::new("app.link-hot-color");
 pub const LINK_ACTIVE_COLOR: Key<Color> = Key::new("app.link-active-color");
@@ -79,48 +86,48 @@ pub fn setup(env: &mut Env, state: &AppState) {
 
     env.set(CURSOR_COLOR, env.get(GREY_000));
 
-    env.set(PROGRESS_BAR_RADIUS, 4.0);
-    env.set(BUTTON_BORDER_RADIUS, 4.0);
-    env.set(BUTTON_BORDER_WIDTH, 1.0);
+    env.set(PROGRESS_BAR_RADIUS, s(4.0));
+    env.set(BUTTON_BORDER_RADIUS, s(4.0));
+    env.set(BUTTON_BORDER_WIDTH, s(1.0));
 
     env.set(
         UI_FONT,
-        FontDescriptor::new(FontFamily::SYSTEM_UI).with_size(13.0),
+        FontDescriptor::new(FontFamily::SYSTEM_UI).with_size(s(13.0)),
     );
     env.set(
         UI_FONT_MEDIUM,
         FontDescriptor::new(FontFamily::SYSTEM_UI)
-            .with_size(13.0)
+            .with_size(s(13.0))
             .with_weight(FontWeight::MEDIUM),
     );
     env.set(
         UI_FONT_MONO,
-        FontDescriptor::new(FontFamily::MONOSPACE).with_size(13.0),
+        FontDescriptor::new(FontFamily::MONOSPACE).with_size(s(13.0)),
     );
-    env.set(TEXT_SIZE_SMALL, 11.0);
-    env.set(TEXT_SIZE_NORMAL, 13.0);
-    env.set(TEXT_SIZE_LARGE, 16.0);
+    env.set(TEXT_SIZE_SMALL, s(s(11.0)));
+    env.set(TEXT_SIZE_NORMAL, s(s(13.0)));
+    env.set(TEXT_SIZE_LARGE, s(s(16.0)));
 
-    env.set(BASIC_WIDGET_HEIGHT, 16.0);
-    env.set(WIDE_WIDGET_WIDTH, grid(12.0));
-    env.set(BORDERED_WIDGET_HEIGHT, grid(4.0));
+    env.set(BASIC_WIDGET_HEIGHT, s(16.0));
+    env.set(WIDE_WIDGET_WIDTH, grid(s(12.0)));
+    env.set(BORDERED_WIDGET_HEIGHT, grid(s(4.0)));
 
-    env.set(TEXTBOX_BORDER_RADIUS, 4.0);
-    env.set(TEXTBOX_BORDER_WIDTH, 1.0);
-    env.set(TEXTBOX_INSETS, Insets::uniform_xy(grid(1.2), grid(1.0)));
+    env.set(TEXTBOX_BORDER_RADIUS, s(4.0));
+    env.set(TEXTBOX_BORDER_WIDTH, s(1.0));
+    env.set(TEXTBOX_INSETS, Insets::uniform_xy(grid(s(1.2)), grid(s(1.0))));
 
     env.set(SCROLLBAR_COLOR, env.get(GREY_300));
     env.set(SCROLLBAR_BORDER_COLOR, env.get(GREY_300));
-    env.set(SCROLLBAR_MAX_OPACITY, 0.8);
+    env.set(SCROLLBAR_MAX_OPACITY, s(0.8));
     env.set(SCROLLBAR_FADE_DELAY, 1500u64);
-    env.set(SCROLLBAR_WIDTH, 6.0);
-    env.set(SCROLLBAR_PAD, 2.0);
-    env.set(SCROLLBAR_RADIUS, 5.0);
-    env.set(SCROLLBAR_EDGE_WIDTH, 1.0);
+    env.set(SCROLLBAR_WIDTH, s(6.0));
+    env.set(SCROLLBAR_PAD, s(2.0));
+    env.set(SCROLLBAR_RADIUS, s(5.0));
+    env.set(SCROLLBAR_EDGE_WIDTH, s(1.0));
 
-    env.set(WIDGET_PADDING_VERTICAL, grid(0.5));
-    env.set(WIDGET_PADDING_HORIZONTAL, grid(1.0));
-    env.set(WIDGET_CONTROL_COMPONENT_PADDING, grid(1.0));
+    env.set(WIDGET_PADDING_VERTICAL, grid(s(0.5)));
+    env.set(WIDGET_PADDING_HORIZONTAL, grid(s(1.0)));
+    env.set(WIDGET_CONTROL_COMPONENT_PADDING, grid(s(1.0)));
 
     env.set(MENU_BUTTON_BG_ACTIVE, env.get(GREY_500));
     env.set(MENU_BUTTON_BG_INACTIVE, env.get(GREY_600));

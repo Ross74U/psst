@@ -1,4 +1,5 @@
 use std::sync::Arc;
+use crate::ui::s;
 
 use druid::{
     widget::{CrossAxisAlignment, Flex, Label, LineBreaking, Scroll},
@@ -198,7 +199,7 @@ fn cover_widget(size: f64) -> impl Widget<Arc<Show>> {
 
 fn rounded_cover_widget(size: f64) -> impl Widget<Arc<Show>> {
     // TODO: Take the radius from theme.
-    cover_widget(size).clip(Size::new(size, size).to_rounded_rect(4.0))
+    cover_widget(size).clip(Size::new(size, size).to_rounded_rect(s(4.0)))
 }
 
 fn show_ctx_menu(show: &WithCtx<Arc<Show>>) -> Menu<AppState> {

@@ -1,4 +1,5 @@
 use std::sync::Arc;
+use crate::ui::s;
 
 use druid::{
     widget::{CrossAxisAlignment, Either, Flex, Label, LineBreaking, ViewSwitcher},
@@ -211,7 +212,7 @@ fn cover_widget(size: f64) -> impl Widget<Arc<Track>> {
 }
 
 fn rounded_cover_widget(size: f64) -> impl Widget<Arc<Track>> {
-    cover_widget(size).clip(Size::new(size, size).to_rounded_rect(4.0))
+    cover_widget(size).clip(Size::new(size, size).to_rounded_rect(s(4.0)))
 }
 
 fn popularity_stars(popularity: u32) -> String {

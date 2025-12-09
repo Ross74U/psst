@@ -11,6 +11,11 @@ use crate::{data::WithCtx, error::Error, widget::icons};
 
 use super::theme;
 
+const SPINNER_SCALE: f64 = 0.2;
+const fn s(size: f64) -> f64 {
+    SPINNER_SCALE * size
+}
+
 struct Spinner {
     t: f64,
 }
@@ -49,7 +54,7 @@ impl<T: Data> Widget<T> for Spinner {
         _data: &T,
         _env: &Env,
     ) -> Size {
-        bc.constrain(Size::new(theme::grid(6.0), theme::grid(16.0)))
+        bc.constrain(Size::new(theme::grid(s(6.0)), theme::grid(s(16.0))))
     }
 
     fn paint(&mut self, ctx: &mut PaintCtx, _data: &T, env: &Env) {
@@ -60,8 +65,8 @@ impl<T: Data> Widget<T> for Spinner {
         for i in 1..=6 {
             let step = f64::from(i);
             let angle = Vec2::from_angle((step / 6.0) * -2.0 * PI);
-            let dot_center = center + angle * theme::grid(2.0);
-            let dot = Circle::new(dot_center, theme::grid(0.8));
+            let dot_center = center + angle * theme::grid(s(2.0));
+            let dot = Circle::new(dot_center, theme::grid(s(0.8)));
             if i == active {
                 ctx.fill(dot, &c1);
             } else {

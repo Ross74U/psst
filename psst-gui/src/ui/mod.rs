@@ -1,3 +1,4 @@
+use crate::ui::theme::s;
 use crate::data::config::SortCriteria;
 use crate::data::Track;
 use crate::error::Error;
@@ -69,7 +70,7 @@ pub fn main_window(config: &Config) -> WindowDesc<AppState> {
 }
 
 pub fn preferences_window() -> WindowDesc<AppState> {
-    let win_size = (theme::grid(50.0), theme::grid(55.0));
+    let win_size = (theme::grid(s(50.0)), theme::grid(s(55.0)));
 
     // On Windows, the window size includes the titlebar.
     let win_size = if cfg!(target_os = "windows") {
@@ -235,7 +236,7 @@ fn root_widget() -> impl Widget<AppState> {
         .with_default_spacer()
         .with_child(user::user_widget())
         .center()
-        .fix_height(88.0)
+        .fix_height(s(88.0))
         .background(Border::Top.with_color(theme::GREY_500));
 
     let sidebar = Flex::column()
@@ -260,7 +261,7 @@ fn root_widget() -> impl Widget<AppState> {
     let split = Split::columns(sidebar, main)
         .split_point(0.2)
         .bar_size(1.0)
-        .min_size(150.0, 300.0)
+        .min_size(s(150.0), s(300.0))
         .min_bar_area(1.0)
         .solid_bar(true);
 
