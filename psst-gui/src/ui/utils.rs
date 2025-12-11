@@ -11,7 +11,7 @@ use crate::{data::WithCtx, error::Error, widget::icons};
 
 use super::theme;
 
-const SPINNER_SCALE: f64 = 0.2;
+const SPINNER_SCALE: f64 = 0.5;
 const fn s(size: f64) -> f64 {
     SPINNER_SCALE * size
 }

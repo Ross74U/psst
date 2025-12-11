@@ -1,3 +1,11 @@
+## why this fork
+This is my personal fork of psst to implement some of my preferences including
+    - improved scaling controls at compile time for GUI (just grep for UI_SCALE and SPINNER_SCALE)
+    - forced JACK host instead of default cpal host, which I find to circumvents some playback issues
+Thus this fork will not be tested on another system (other than Arch + Wayland)
+
+I will try to keep this updated with psst but no guarantees.
+
 # Psst
 
 A fast Spotify client with a native GUI written in Rust, without Electron.

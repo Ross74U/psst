@@ -19,7 +19,9 @@ pub struct CpalOutput {
 impl CpalOutput {
     pub fn open() -> Result<Self, Error> {
         // Open the default output device.
-        let device = cpal::default_host()
+        let host = cpal::host_from_id(cpal::HostId::Jack) 
+            .expect("JACK host not available (feature not enabled or JACK not installed?)");
+        let device = host
             .default_output_device()
             .ok_or(cpal::DefaultStreamConfigError::DeviceNotAvailable)?;
 
