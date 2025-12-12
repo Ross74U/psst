@@ -1,10 +1,9 @@
 ## Why Fork?
-This is my personal fork of psst to implement some of my preferences including
-- uses my fork of druid which supports gtk input methods
-- fixed url percent escaping so searches with non-ascii characters work
+This is my personal fork of psst which implements the following
+- uses [my fork of druid](https://github.com/Ross74U/druid) which supports gtk ime (this has been tested with fcitx5 on Arch + Wayland)
+- fixed webapi search query percent escaping so searches with non-ascii characters work
 - scaling controls at compile time for GUI (just grep for ```UI_SCALE``` and ```SPINNER_SCALE```)
 - forced JACK host instead of default cpal host, which I find to circumvents some playback issues
-Thus this fork will not be tested on another system (other than Arch + Wayland)
 
 I will try to keep this updated with psst but no guarantees.
 
