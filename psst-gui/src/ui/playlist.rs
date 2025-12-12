@@ -167,8 +167,7 @@ fn unfollow_confirm_window(msg: UnfollowPlaylist) -> WindowDesc<AppState> {
         .window_size((theme::grid(45.0), theme::grid(25.0)))
         .title("Unfollow playlist")
         .resizable(false)
-        .show_title(false)
-        .transparent_titlebar(true);
+        .show_titlebar(false);
     if cfg!(target_os = "macos") {
         win.menu(menu::main_menu)
     } else {
@@ -212,8 +211,7 @@ fn rename_playlist_window(link: PlaylistLink) -> WindowDesc<AppState> {
         .window_size((theme::grid(45.0), theme::grid(30.0)))
         .title("Rename playlist")
         .resizable(false)
-        .show_title(false)
-        .transparent_titlebar(true);
+        .show_titlebar(false);
     if cfg!(target_os = "macos") {
         win.menu(menu::main_menu)
     } else {

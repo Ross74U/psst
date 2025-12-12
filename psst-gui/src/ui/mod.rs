@@ -60,8 +60,7 @@ pub fn main_window(config: &Config) -> WindowDesc<AppState> {
         .title(compute_main_window_title)
         .with_min_size((theme::grid(65.0), theme::grid(50.0)))
         .window_size(config.window_size)
-        .show_title(false)
-        .transparent_titlebar(true);
+        .show_titlebar(false);
     if cfg!(target_os = "macos") {
         win.menu(menu::main_menu)
     } else {
@@ -84,8 +83,7 @@ pub fn preferences_window() -> WindowDesc<AppState> {
         .title("Preferences")
         .window_size(win_size)
         .resizable(false)
-        .show_title(false)
-        .transparent_titlebar(true);
+        .show_titlebar(false);
     if cfg!(target_os = "macos") {
         win.menu(menu::main_menu)
     } else {
@@ -98,8 +96,7 @@ pub fn account_setup_window() -> WindowDesc<AppState> {
         .title("Login")
         .window_size((theme::grid(50.0), theme::grid(45.0)))
         .resizable(false)
-        .show_title(false)
-        .transparent_titlebar(true);
+        .show_titlebar(false) ;
     if cfg!(target_os = "macos") {
         win.menu(menu::main_menu)
     } else {
@@ -121,8 +118,7 @@ pub fn artwork_window() -> WindowDesc<AppState> {
     let win = WindowDesc::new(artwork_widget())
         .window_size(win_size)
         .resizable(false)
-        .show_title(false)
-        .transparent_titlebar(true)
+        .show_titlebar(false)
         .title(|data: &AppState, _env: &_| {
             data.playback
                 .now_playing

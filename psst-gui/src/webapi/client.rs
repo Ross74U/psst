@@ -28,6 +28,7 @@ use ureq::{
     http::{Response, StatusCode},
     Agent, Body,
 };
+use percent_encoding::{utf8_percent_encode, NON_ALPHANUMERIC};
 
 use crate::{
     data::{
@@ -1337,8 +1338,10 @@ impl WebApi {
         }
 
         let type_query_param = topics.iter().map(SearchTopic::as_str).join(",");
+
+        let percent_encoded_query = utf8_percent_encode(query, NON_ALPHANUMERIC).to_string();
         let request = &RequestBuilder::new("v1/search", Method::Get, None)
-            .query("q", query.replace(" ", "%20"))
+            .query("q", percent_encoded_query)
             .query("type", &type_query_param)
             .query("limit", limit.to_string())
             .query("marker", "from_token");
